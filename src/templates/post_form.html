@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block head_title %}Create A Post | postcreator.com{% endblock head_title %}
+
+{% block content %}
+{{ block.super }}
+<h1>Form</h1>
+
+<form method='POST' action=''>{% csrf_token %}
+  {{ form.as_p }}
+  <input type='submit' value='Create Post' />
+</form>
+
+{% endblock content %}
