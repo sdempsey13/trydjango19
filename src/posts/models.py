@@ -3,9 +3,12 @@ from django.db import models
 from django.urls import reverse
 # Create your models here.
 
+def upload_location(instance, filename):
+    return "%s/%s" %(instance.id, filename)
+
 class Post(models.Model):
     title = models.CharField(max_length=120)
-    image = models.FileField(null=True, blank=True)
+    image = models.FileField(upload_to=upload_location, null=True, blank=True)
     height_field = models.IntegerField(default=0)
     width_field = models.IntegerField(default=0)
     content = models.TextField()
